@@ -3,8 +3,9 @@
 .git
 /gradle
 app.jks
-gradleew
-gradleew.bat
+gradlew
+gradlew.bat
+local.properties
 settings.gradle
 /app/build
 /app/libs
