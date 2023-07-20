@@ -1,0 +1,17 @@
+.gradle
+.idea
+.git
+/gradle
+app.jks
+gradleew
+gradleew.bat
+settings.gradle
+/app/build
+/app/libs
+/app/release
+/app/.gitignore
+/app/build.gradle
+/app/proguard-rules.pro
+/app/src/androidTest
+/app/src/test
+/app/src/main/res
