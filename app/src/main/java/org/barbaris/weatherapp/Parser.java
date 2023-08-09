@@ -53,8 +53,8 @@ public class Parser {
         if(weather.equals("pcloudy")) return "Слегка облачно";
         if(weather.equals("mcloudy")) return "Частично облачно";
         if(weather.equals("cloudy")) return "Облачно";
-        if(weather.equals("lightrain")) return "Легкий дождь";
-        if(weather.equals("oshower") || weather.equals("ishower")) return "Грибной дождь";
+        if(weather.equals("lightrain")) return "Долгий лёгкий дождь";
+        if(weather.equals("oshower") || weather.equals("ishower")) return "Кратковременный дождь";
         if(weather.equals("rain")) return "Дождь";
         if(weather.equals("lightsnow")) return "Небольшой снег";
         if(weather.equals("snow")) return "Снег";

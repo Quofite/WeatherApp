@@ -10,9 +10,11 @@ import java.net.URL;
 
 public class Request extends Thread {
     MainActivity activity;
+    private String city;
 
-    public Request(MainActivity activity) {
+    public Request(MainActivity activity, String city) {
         this.activity = activity;
+        this.city = city;
     }
 
     @Override
@@ -20,7 +22,7 @@ public class Request extends Thread {
         super.run();
 
         try {
-            URL url = new URL("https://www.7timer.info/bin/api.pl?lon=37.58&lat=55.79&product=civillight&output=json");
+            URL url = new URL(String.format("https://www.7timer.info/bin/api.pl?%s&product=civillight&output=json", city));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
@@ -28,7 +30,7 @@ public class Request extends Thread {
 
             StringBuilder response = new StringBuilder();
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            reader.lines().forEach(l -> response.append(l + "\r\n"));
+            reader.lines().forEach(l -> response.append(l).append("\r\n"));
             reader.close();
 
             Gson gson = new Gson();
