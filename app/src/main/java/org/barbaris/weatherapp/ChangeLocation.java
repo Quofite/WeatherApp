@@ -35,6 +35,13 @@ public class ChangeLocation extends AppCompatActivity {
     public void setVurnari(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("city", citiesData.getVurnari());
+
+        SharedPreferences preferences = getSharedPreferences("cityChoose", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.putString("city", citiesData.getVurnari());
+        editor.apply();
+
         startActivity(intent);
     }
 }

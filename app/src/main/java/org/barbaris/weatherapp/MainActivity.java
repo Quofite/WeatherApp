@@ -1,7 +1,10 @@
 package org.barbaris.weatherapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.ConditionVariable;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences preferences = getSharedPreferences("cityChoose", Context.MODE_PRIVATE);
+
         CitiesCoordinates citiesData = new CitiesCoordinates();
-        String city;
+        String city = preferences.getString("city", citiesData.getMoscow());
 
         try {
             city = getIntent().getExtras().get("city").toString();
@@ -24,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
             if(city.equals("")) {
                 city = citiesData.getMoscow();
             }
-        } catch (NullPointerException ex) {
-            city = citiesData.getMoscow();
-        }
+        } catch (NullPointerException ignored) {}
 
         TextView text = findViewById(R.id.city);
         text.setText(citiesData.getCityNameByCoord(city));
