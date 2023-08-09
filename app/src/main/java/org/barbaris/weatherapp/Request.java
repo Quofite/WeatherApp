@@ -36,8 +36,8 @@ public class Request extends Thread {
             Gson gson = new Gson();
             DataModel data = gson.fromJson(response.toString(), DataModel.class);
 
-            Parser parser = new Parser();
-            parser.parse(data, activity);
+            Parser parser = new Parser(data, activity);
+            parser.start();
 
         } catch (Exception ex) {
             System.out.println(ex.getLocalizedMessage());

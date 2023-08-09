@@ -6,11 +6,22 @@ import android.widget.ListView;
 
 import org.barbaris.weatherapp.Models.DataModel;
 
-public class Parser {
+public class Parser extends Thread {
     private static final int FORECAST_DAYS  = 7;
+    private final DataModel data;
+    private final MainActivity activity;
 
+    public Parser(DataModel data, MainActivity activity) {
+        super();
 
-    public void parse(DataModel data, MainActivity activity) {
+        this.activity = activity;
+        this.data = data;
+    }
+
+    @Override
+    public void run() {
+        super.run();
+
         String[] parsedData = new String[7];
 
         for(int i = 0; i < FORECAST_DAYS; i++) {
