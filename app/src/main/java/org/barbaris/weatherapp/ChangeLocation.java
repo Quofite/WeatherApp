@@ -23,12 +23,26 @@ public class ChangeLocation extends AppCompatActivity {
     public void setMoscow(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("city", citiesData.getMoscow());
+
+        SharedPreferences preferences = getSharedPreferences("cityChoose", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.putString("city", citiesData.getMoscow());
+        editor.apply();
+
         startActivity(intent);
     }
 
     public void setYahroma(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("city", citiesData.getYahroma());
+
+        SharedPreferences preferences = getSharedPreferences("cityChoose", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.putString("city", citiesData.getYahroma());
+        editor.apply();
+
         startActivity(intent);
     }
 
